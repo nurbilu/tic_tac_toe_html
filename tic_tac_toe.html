@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="tic.css">
+</head>
+
+<body>
+    <div class="board">
+        <table>
+            <tr>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+            </tr>
+            <tr>
+                <td class="tile empty"></td>
+                <td class="tile empty"></td>
+                <td class="tile empty"></td>
+            </tr>
+            <tr>
+                <td class="tile empty"></td>
+                <td class="tile empty"></td>
+                <td class="tile empty"></td>
+            </tr>
+            <tr>
+                <td class="tile empty"></td>
+                <td class="tile empty"></td>
+                <td class="tile empty"></td>
+            </tr>
+        </table>
+        <button class="reset-button">Reset</button>
+    </div>
+
+    <script>
+        const tiles = document.querySelectorAll(".tile")
+        const resetButton = document.querySelector(".reset-button");
+
+        for (let i = 0; i < tiles.length; i++) {
+            tiles[i].addEventListener("click", function () {
+                if (this.classList.contains("empty")) {
+                    this.classList.remove("empty");
+                    this.classList.add(turn);
+                    turn = turn === "x" ? "o" : "x";
+                    checkWinner();
+                }
+            });
+        }
+        resetButton.addEventListener("click", function () {
+            for (let i = 0; i < tiles.length; i++) {
+                tiles[i].classList.remove("x");
+                tiles[i].classList.remove("o");
+                tiles[i].classList.add("empty");
+            }
+
+            turn = "x";
+        });
+
+
+
+        let turn = "x";
+
+        function checkWinner() {
+            for (let i = 0; i < 3; i++) {
+                if (tiles[i * 3].classList.contains(turn) &&
+                    tiles[i * 3 + 1].classList.contains(turn) &&
+                    tiles[i * 3 + 2].classList.contains(turn)) {
+                    alert(`Player ${turn} wins!`);
+                    return;
+                }
+            }
+
+            for (let i = 0; i < 3; i++) {
+                if (tiles[i].classList.contains(turn) &&
+                    tiles[i + 3].classList.contains(turn) &&
+                    tiles[i + 6].classList.contains(turn)) {
+                    alert(`Player ${turn} wins!`);
+                    return;
+                }
+            }
+
+            if (tiles[0].classList.contains(turn) &&
+                tiles[4].classList.contains(turn) &&
+                tiles[8].classList.contains(turn)) {
+                alert(`Player ${turn} wins!`);
+                return;
+            }
+
+            if (tiles[2].classList.contains(turn) &&
+                tiles[4].classList.contains(turn) &&
+                tiles[6].classList.contains(turn)) {
+                alert(`Player ${turn} wins!`);
+                return;
+            }
+
+            if (!tiles.some(tile => tile.classList.contains("empty"))) {
+                alert("Tie!");
+            }
+        }
+    </script>
+</body>
+
+</html>

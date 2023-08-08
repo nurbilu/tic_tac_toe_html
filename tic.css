@@ -1,0 +1,56 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.board {
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+  margin: 0 auto;
+}
+
+.tile {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  text-align: center;
+  margin: 0 5px;
+}
+
+.tile.empty {
+  background-color: white;
+}
+
+.tile.x {
+  background-color: red;
+  color: white;
+}
+
+.tile.o {
+  background-color: blue;
+  color: white;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  background-color: black;
+  color: white;
+}
+.reset-button {
+    background-color: green;
+    color: white;
+    padding: 10px;
+    border: 1px solid black;
+    cursor: pointer;
+}  
